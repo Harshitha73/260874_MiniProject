@@ -1,9 +1,10 @@
 import os
 import platform
 
-
-def studentmanagement():
+def initialize():
+	global studentlist
 	studentlist=[]
+	global rollNo
 	rollNo=[]
 	with open('studentList.txt','r') as file:
 		for line in file:
@@ -14,6 +15,8 @@ def studentmanagement():
 				stu_no=line.split(':')
 				rollNo.append(stu_no[1].rstrip())
 
+def studentmanagement():
+	initialize()
 
 	print("\n.......... Welcome to Student Management System ...........\n")
 	print("[Choice 1: Showing the List of Student]")
@@ -114,5 +117,6 @@ def continueAgain():
 	else:
 		quit()
 
+initialize()
 studentmanagement()
 continueAgain()
