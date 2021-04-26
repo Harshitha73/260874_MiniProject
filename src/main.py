@@ -116,7 +116,7 @@ def continueAgain():
 		continueAgain()
 	else:
 		quit()
-
-initialize()
-studentmanagement()
-continueAgain()
+if __name__=="__main__" :
+	initialize()
+	studentmanagement()
+	continueAgain()
