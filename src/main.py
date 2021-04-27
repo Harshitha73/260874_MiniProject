@@ -2,6 +2,81 @@ import os
 import platform
 
 
+def show_elements():
+    print("Student List\n")
+    f = open('studentList.txt', 'r')
+    print(f.read())
+    f.close()
+    # print(student_list)
+    # print(rollNo)
+
+
+def add_element():
+    # c = len(student_list)
+    r = len(roll_no)
+    f = open('studentList.txt', 'a')
+    # print(c)
+    # print(r)
+    # s="Student"+str(c+1)+":"
+    print("Enter Student Name: ")
+    name1 = input()
+    student_list.append(name1)
+    name = "Name:" + name1
+    if r == 0:
+        roll_no.append(str(101))
+    else:
+        roll_no.append(str(int(roll_no[r - 1]) + 1))
+    num = "Roll.No:" + roll_no[r]
+    f.write("\n")
+    # f.write(s)
+    # f.write("\n")
+    f.write(num)
+    f.write("\n")
+    f.write(name)
+    f.write("\n")
+    # print(rollNo)
+    # print(student_list)
+    f.close()
+
+
+def search_element():
+    student_searching = input("Choose Student Number To Search: ")
+    c = 1
+    with open('studentList.txt') as file:
+        for line in file:
+            if student_searching in line:
+                print("Record Found")
+                print("Roll.No: " + student_searching)
+                print(next(file))
+                # student_index=rollNo.index(student_searching)
+                # print(student_list[student_index]+" "+rollNo[student_index])
+                c = 0
+        if c == 1:
+            print("\nThere is No Record Found Of this Student {}".format(student_searching))
+
+
+def delete_element():
+    student_delete = input("Choose a Student Number To Delete: ")
+    if student_delete in roll_no:
+        student_index = roll_no.index(student_delete)
+        with open('studentList.txt', 'r') as file:
+            data = file.readlines()
+        with open('studentList.txt', 'w') as file:
+            for line in data:
+                if not (student_delete in line or str(student_list[student_index]) in line):
+                    file.write(line)
+                else:
+                    continue
+        del roll_no[student_index]
+        del student_list[student_index]
+        print(roll_no)
+        print(student_list)
+        with open('studentList.txt') as file:
+            print(file.read())
+    else:
+        print("\n There is No Record Found of This Student {} ".format(student_delete))
+
+
 def initialize():
     global student_list
     global roll_no
@@ -33,74 +108,13 @@ def student_management():
         print("\n")
 
     if x == 1:
-        print("Student List\n")
-        f = open('studentList.txt', 'r')
-        print(f.read())
-        f.close()
-    # print(student_list)
-    # print(rollNo)
+        show_elements()
     elif x == 2:
-        # c = len(student_list)
-        r = len(roll_no)
-        f = open('studentList.txt', 'a')
-        # print(c)
-        # print(r)
-        # s="Student"+str(c+1)+":"
-        print("Enter Student Name: ")
-        name1 = input()
-        student_list.append(name1)
-        name = "Name:" + name1
-        if r == 0:
-            roll_no.append(str(101))
-        else:
-            roll_no.append(str(int(roll_no[r - 1]) + 1))
-        num = "Roll.No:" + roll_no[r]
-        f.write("\n")
-        # f.write(s)
-        # f.write("\n")
-        f.write(num)
-        f.write("\n")
-        f.write(name)
-        f.write("\n")
-        # print(rollNo)
-        # print(student_list)
-        f.close()
+        add_element()
     elif x == 3:
-        student_searching = input("Choose Student Number To Search: ")
-        c = 1
-        with open('studentList.txt') as file:
-            for line in file:
-                if student_searching in line:
-                    print("Record Found")
-                    print("Roll.No: " + student_searching)
-                    print(next(file))
-                    # student_index=rollNo.index(student_searching)
-                    # print(student_list[student_index]+" "+rollNo[student_index])
-                    c = 0
-            if c == 1:
-                print("\nThere is No Record Found Of this Student {}".format(student_searching))
-
+        search_element()
     elif x == 4:
-        student_delete = input("Choose a Student Number To Delete: ")
-        if student_delete in roll_no:
-            student_index = roll_no.index(student_delete)
-            with open('studentList.txt', 'r') as file:
-                data = file.readlines()
-            with open('studentList.txt', 'w') as file:
-                for line in data:
-                    if not (student_delete in line or str(student_list[student_index]) in line):
-                        file.write(line)
-                    else:
-                        continue
-            del roll_no[student_index]
-            del student_list[student_index]
-            print(roll_no)
-            print(student_list)
-            with open('studentList.txt') as file:
-                print(file.read())
-        else:
-            print("\n There is No Record Found of This Student {} ".format(student_delete))
-
+        delete_element()
     elif x < 1 or x > 4:
         print("Please Enter Valid Choice")
 
