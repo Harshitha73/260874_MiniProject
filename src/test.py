@@ -20,5 +20,3 @@ def test_search_element():
     output = main.search(str(101), file)
     assert print("Record Found\nRoll.No: 101\nName:Harshitha") == output
     file.close()
-
-
