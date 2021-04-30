@@ -2,6 +2,19 @@ import os
 import platform
 
 
+def search(student_searching, file):
+    for line in file:
+        if student_searching in line:
+            print("Record Found")
+            print("Roll.No: " + student_searching)
+            print(next(file))
+            # student_index=rollNo.index(student_searching)
+            # print(student_list[student_index]+" "+rollNo[student_index])
+            c = 0
+    if c == 1:
+        print("\nThere is No Record Found Of this Student {}".format(student_searching))
+
+
 def show_elements():
     print("Student List\n")
     f = open('studentList.txt', 'r')
@@ -43,16 +56,7 @@ def search_element():
     student_searching = input("Choose Student Number To Search: ")
     c = 1
     with open('studentList.txt') as file:
-        for line in file:
-            if student_searching in line:
-                print("Record Found")
-                print("Roll.No: " + student_searching)
-                print(next(file))
-                # student_index=rollNo.index(student_searching)
-                # print(student_list[student_index]+" "+rollNo[student_index])
-                c = 0
-        if c == 1:
-            print("\nThere is No Record Found Of this Student {}".format(student_searching))
+        search(student_searching, file)
 
 
 def delete_element():
