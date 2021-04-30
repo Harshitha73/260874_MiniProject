@@ -25,6 +25,7 @@ Function Name             | Description
 `continue_again`             | Function that can either continue the whole program or terminate it based upon the User's choice
 `show_elements` | Function that displays the student details present in the studentList text file
 `add_element` | Function that can add another student details into the StudentList text file and also the lists that contain the information
-`search_element` | Function that is used to search the details of a particular student from the StudentList file
+`search_element` | Function that takes the details of a student from User to search for the particular student
+`search` | Function that has two parameters, the student number and the StudentList file to search the details of the student
 `delete_element` | Function that can delete the details of a student from the StudentList file and as well as the lists that contain the student information
 
